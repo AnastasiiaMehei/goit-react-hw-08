@@ -1,0 +1,21 @@
+.div {
+  margin-bottom: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.input {
+  width: 500px;
+  border: 1px solid;
+  padding: 10px;
+}
+.input:hover {
+  border: 2px solid salmon;
+}
+.input:focus {
+  border: 2px solid salmon;
+}
+.paragraph {
+  font-size: 27px;
+  color: #282828;
+}
