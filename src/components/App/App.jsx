@@ -4,10 +4,10 @@ import SearchBox from "../SearchBox/SearchBox";
 import ContactList from "../ContactList/ContactList";
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchContacts } from "../../redux/contactsOps";
+import { fetchContacts } from "../../contacts/operations";
 import Error from "../Error/Error";
 import Loader from "../Loader/Loader";
-import { selectError, selectLoading } from "../../redux/contactsSlice";
+import { selectError, selectLoading } from "../../contacts/selectors";
 export default function App() {
   const dispatch = useDispatch();
   const isLoading = useSelector(selectLoading);

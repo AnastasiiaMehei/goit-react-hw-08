@@ -3,11 +3,11 @@ import * as Yup from "yup";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import css from "./ContactForm.module.css";
-import { addContacts } from "../../redux/contactsOps";
+import { addContact } from "../../contacts/operations";
 export default function ContactForm() {
   const dispatch = useDispatch();
   const handleSubmit = (values, actions) => {
-    dispatch(addContacts(values));
+    dispatch(addContact(values));
     actions.resetForm();
   };
 
