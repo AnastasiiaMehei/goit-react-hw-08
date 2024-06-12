@@ -1,17 +1,24 @@
 import * as Yup from "yup";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import css from "./ContactEditor.module.css";
 import { Formik, Form, Field, ErrorMessage } from "formik";
+import { selectToken } from "../../redux/auth/selectors";
 
 export default function ContactEditor() {
   const dispatch = useDispatch();
+  const token = useSelector(selectToken);
 
   const handleSubmit = (values, actions) => {
     const { name, phone } = values;
+    console.log("Submitting contact:", values); // Логирование данных
     if (name && phone) {
-      dispatch(addContact({ name, phone }));
-      actions.resetForm();
+      if (token) {
+        dispatch(addContact({ name, number: phone })); // Изменено phone на number
+        actions.resetForm();
+      } else {
+        alert("You must be logged in to add a contact.");
+      }
     } else {
       alert("Both fields are required!");
     }
@@ -30,7 +37,7 @@ export default function ContactEditor() {
 
   return (
     <Formik
-      initialValues={{ name: "", phone: "" }}
+      initialValues={{ name: "", number: "" }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >

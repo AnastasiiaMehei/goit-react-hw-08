@@ -11,7 +11,7 @@ export default function ContactList() {
         <li className={css.li} key={contact.id}>
           <Contact
             id={contact.id}
-            contact={{ ...contact, name: contact.name, phone: contact.phone }}
+            contact={{ ...contact, name: contact.name, number: contact.number }}
           />
         </li>
       ))}

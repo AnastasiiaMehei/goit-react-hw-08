@@ -15,7 +15,7 @@ export default function Contact({ id, contact }) {
           <IoPerson className={css.icon} /> {contact.name}
         </p>
         <p className={css.paragraph}>
-          <FaPhone className={css.icon} /> {contact.phone}
+          <FaPhone className={css.icon} /> {contact.number}
         </p>
       </div>
       <button className={css.btn} onClick={handleDelete}>
