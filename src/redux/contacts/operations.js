@@ -1,50 +1,41 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-// get
+import axios from "axios";
+
+// GET @ /contacts
 export const fetchContacts = createAsyncThunk(
-  "contacts/fetchContacts",
+  "contacts/fetchAll",
   async (_, thunkAPI) => {
     try {
-      const response = await axios.get("/contacts");
-      return response.data;
+      const res = await axios.get("/contacts");
+      return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
 );
-// post
+
+// POST @ /contacts
 export const addContact = createAsyncThunk(
-  "/contacts/addContact",
-  async (newContact, thunkAPI) => {
+  "contacts/addContact",
+  async (text, thunkAPI) => {
     try {
-      const response = await axios.post("/contacts", newContact);
+      const response = await axios.post("/contacts", { text });
       return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );
-// delete
+
+// DELETE @ /contacts/:id
 export const deleteContact = createAsyncThunk(
-  "/contacts/deleteContact",
+  "contacts/deleteContact",
   async (contactId, thunkAPI) => {
     try {
       const response = await axios.delete(`/contacts/${contactId}`);
       return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
-    }
-  }
-);
-// додала метод patch
-export const patchContact = createAsyncThunk(
-  "/contacts/patchContact",
-  async (contactId, thunkAPI) => {
-    try {
-      const response = await axios.patch(`/contacts/${contactId}`);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
     }
   }
 );

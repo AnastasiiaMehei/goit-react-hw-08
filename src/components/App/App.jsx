@@ -7,7 +7,7 @@ const RegisterPage = lazy(() =>
   import("../../pages/RegisterPage/RegisterPage")
 );
 const LoginPage = lazy(() => import("../../pages/LoginPage/LoginPage"));
-const TasksPage = lazy(() => import("../../pages/TaskPage/TaskPage"));
+const ContactPage = lazy(() => import("../../pages/ContactPage/ContactPage"));
 
 export default function App() {
   return (
@@ -17,7 +17,7 @@ export default function App() {
           <Route path="/" element={<HomePage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/login" element={<LoginPage />} />
-          <Route path="/tasks" element={<TasksPage />} />
+          <Route path="/tasks" element={<ContactPage />} />
         </Routes>
       </Suspense>
     </Layout>

@@ -34,24 +34,36 @@ h1 {
   font-size: 3.2em;
   line-height: 1.1;
 }
-
 button {
-  border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
   cursor: pointer;
   transition: border-color 0.25s;
+  border-radius: 8px;
+  border: 1px solid black;
+  width: 129px;
+  margin-top: 15px;
+  background-color: #8a8ab7;
+  border-color: chartreuse;
+}
+button:focus {
+  border: 1px solid rgb(189, 189, 26);
+  background-color: #2626cb;
 }
 button:hover {
-  border-color: #646cff;
+  border: 1px solid rgb(189, 189, 26);
+  background-color: #2626cb;
 }
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+form {
+  margin: 0 auto;
+  border: 1px solid black;
+  padding: 15px;
+  width: 250px;
+  height: 100%;
+  margin-bottom: 30px;
 }
 
 @media (prefers-color-scheme: light) {
