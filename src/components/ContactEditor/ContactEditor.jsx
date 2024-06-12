@@ -6,14 +6,12 @@ import { Formik, Form, Field, ErrorMessage } from "formik";
 
 export default function ContactEditor() {
   const dispatch = useDispatch();
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const form = e.currentTarget;
-    const name = form.elements.name?.value.trim();
-    const phone = form.elements.phone?.value.trim();
+
+  const handleSubmit = (values, actions) => {
+    const { name, phone } = values;
     if (name && phone) {
       dispatch(addContact({ name, phone }));
-      form.reset();
+      actions.resetForm();
     } else {
       alert("Both fields are required!");
     }
@@ -29,26 +27,22 @@ export default function ContactEditor() {
       .max(50, "Too Long")
       .required("Required"),
   });
+
   return (
     <Formik
-      initialValues={{ name: "", number: "" }}
+      initialValues={{ name: "", phone: "" }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => (
-        <Form className={css.form} onSubmit={handleSubmit}>
+        <Form className={css.form}>
           <div className={css.div}>
             <Field className={css.field} name="name" placeholder="Name" />
             <ErrorMessage className={css.span} name="name" component="span" />
           </div>
           <div className={css.div}>
-            <Field
-              className={css.field}
-              type="number"
-              name="number"
-              placeholder="Number"
-            />
-            <ErrorMessage className={css.span} name="number" component="span" />
+            <Field className={css.field} name="phone" placeholder="Phone" />
+            <ErrorMessage className={css.span} name="phone" component="span" />
           </div>
           <button className={css.button} type="submit" disabled={isSubmitting}>
             Add contact
