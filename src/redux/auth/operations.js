@@ -1,12 +1,10 @@
-import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
 
 axios.defaults.baseURL = "https://connections-api.goit.global/";
-// Utility to add JWT
 const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
-// Utility to remove JWT
 const clearAuthHeader = () => {
   axios.defaults.headers.common.Authorization = "";
 };
@@ -16,9 +14,9 @@ const clearAuthHeader = () => {
  */
 export const register = createAsyncThunk(
   "auth/register",
-  async (credentials, thunkAPI) => {
+  async (newUser, thunkAPI) => {
     try {
-      const res = await axios.post("/users/signup", credentials);
+      const res = await axios.post("/users/signup", newUser);
       // After successful registration, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
@@ -34,9 +32,9 @@ export const register = createAsyncThunk(
  */
 export const logIn = createAsyncThunk(
   "auth/login",
-  async (credentials, thunkAPI) => {
+  async (userInfo, thunkAPI) => {
     try {
-      const res = await axios.post("/users/login", credentials);
+      const res = await axios.post("/users/login", userInfo);
       // After successful login, add the token to the HTTP header
       setAuthHeader(res.data.token);
       return res.data;
@@ -65,7 +63,7 @@ export const logOut = createAsyncThunk("auth/logout", async (_, thunkAPI) => {
  * headers: Authorization: Bearer token
  */
 export const refreshUser = createAsyncThunk(
-  "auth/refresh",
+  "users/refresh",
   async (_, thunkAPI) => {
     // Reading the token from the state via getState()
     const state = thunkAPI.getState();
