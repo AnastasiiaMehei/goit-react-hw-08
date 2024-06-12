@@ -1,3 +1,7 @@
+.div {
+  display: flex;
+  flex-direction: column;
+}
 .form {
   display: flex;
   width: 100%;
@@ -8,15 +12,21 @@
   max-width: 250px;
   align-items: center;
 }
-.inputs {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+.span {
+  color: red;
+  margin: 0;
+  padding: 0;
+}
+
+.field {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid;
 }
 .input {
   flex-grow: 1;
   padding: 8px;
-  border: 1px solid rgba(33, 33, 33, 0.2);
+  border: 1px solid rgba(234, 73, 73, 0.2);
   border-radius: 4px;
   font: inherit;
   line-height: 16px;
