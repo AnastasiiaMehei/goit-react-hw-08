@@ -63,7 +63,6 @@ export default function Contact({ id, contact }) {
         </p>
       </div>
       <div className={css.btnDiv}>
-        {" "}
         <button className={css.btn} onClick={handleDelete}>
           <FaTrashCan />
         </button>

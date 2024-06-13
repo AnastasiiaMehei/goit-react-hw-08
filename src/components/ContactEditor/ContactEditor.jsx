@@ -1,10 +1,10 @@
-import { toast } from "react-hot-toast";
+import { Formik, Form, Field, ErrorMessage } from "formik";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
-import css from "./ContactEditor.module.css";
-import { Formik, Form, Field, ErrorMessage } from "formik";
 import { selectToken } from "../../redux/auth/selectors";
+import { toast } from "react-hot-toast";
+import css from "./ContactEditor.module.css";
 
 export default function ContactEditor() {
   const dispatch = useDispatch();
@@ -12,7 +12,7 @@ export default function ContactEditor() {
 
   const handleSubmit = (values, actions) => {
     const { name, phone } = values;
-    console.log("Submitting contact:", values); // Логирование данных
+    console.log("Submitting contact:", values);
     if (name && phone) {
       if (token) {
         dispatch(addContact({ name, number: phone }))
@@ -42,7 +42,10 @@ export default function ContactEditor() {
 
   return (
     <Formik
-      initialValues={{ name: "", number: "" }}
+      initialValues={{
+        name: "",
+        phone: "",
+      }}
       validationSchema={validationSchema}
       onSubmit={handleSubmit}
     >
@@ -56,7 +59,7 @@ export default function ContactEditor() {
             <Field className={css.field} name="phone" placeholder="Phone" />
             <ErrorMessage className={css.span} name="phone" component="span" />
           </div>
-          <button className={css.button} type="submit" disabled={isSubmitting}>
+          <button type="submit" disabled={isSubmitting}>
             Add contact
           </button>
         </Form>

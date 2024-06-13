@@ -13,7 +13,9 @@
   display: flex;
   flex-direction: column;
 }
-
+.btn {
+  border: none;
+}
 .paragraphDiv {
   margin-right: 30px;
 }
