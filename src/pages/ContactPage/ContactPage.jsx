@@ -7,6 +7,7 @@ import ContactEditor from "../../components/ContactEditor/ContactEditor";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
 import ToastContainer from "react-hot-toast";
+import Loader from "../../components/Loader/Loader";
 
 export default function ContactPage() {
   const dispatch = useDispatch();
@@ -21,9 +22,8 @@ export default function ContactPage() {
       <PageTitle>Your contacts</PageTitle>
       <ContactEditor />
       <SearchBox />
-      <div>{isLoading && "Request in progress..."}</div>
+      <div>{isLoading && <Loader />}</div>
       <ToastContainer position="top-right" autoClose={5000} />
-
       <ContactList />
     </>
   );
