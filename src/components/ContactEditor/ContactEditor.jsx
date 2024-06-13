@@ -1,3 +1,4 @@
+import { toast } from "react-hot-toast";
 import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
@@ -14,13 +15,17 @@ export default function ContactEditor() {
     console.log("Submitting contact:", values); // Логирование данных
     if (name && phone) {
       if (token) {
-        dispatch(addContact({ name, number: phone })); // Изменено phone на number
-        actions.resetForm();
+        dispatch(addContact({ name, number: phone }))
+          .then(() => {
+            toast.success("Contact added successfully");
+            actions.resetForm();
+          })
+          .catch(() => {
+            toast.error("Failed to add contact");
+          });
       } else {
         alert("You must be logged in to add a contact.");
       }
-    } else {
-      alert("Both fields are required!");
     }
   };
 
