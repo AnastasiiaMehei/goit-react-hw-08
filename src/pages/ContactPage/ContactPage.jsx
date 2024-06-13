@@ -6,7 +6,6 @@ import { selectLoading } from "../../redux/contacts/selectors";
 import ContactEditor from "../../components/ContactEditor/ContactEditor";
 import ContactList from "../../components/ContactList/ContactList";
 import SearchBox from "../../components/SearchBox/SearchBox";
-import ToastContainer from "react-hot-toast";
 import Loader from "../../components/Loader/Loader";
 
 export default function ContactPage() {
@@ -23,7 +22,6 @@ export default function ContactPage() {
       <ContactEditor />
       <SearchBox />
       <div>{isLoading && <Loader />}</div>
-      <ToastContainer position="top-right" autoClose={5000} />
       <ContactList />
     </>
   );
