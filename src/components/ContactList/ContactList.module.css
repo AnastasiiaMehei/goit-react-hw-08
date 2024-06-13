@@ -1,5 +1,4 @@
 .ul {
-  max-width: 1200px;
   padding: 0 20px;
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -18,4 +17,6 @@
   border-radius: 16px;
   overflow: hidden;
   cursor: zoom-in;
+  width: 300px;
+  gap: 25px;
 }

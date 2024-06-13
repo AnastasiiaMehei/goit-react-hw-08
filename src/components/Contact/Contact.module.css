@@ -1,5 +1,4 @@
 .container {
-  border: 2px solid black;
   border-radius: 5px;
   display: flex;
   justify-content: space-between;
@@ -9,22 +8,12 @@
   padding-right: 5px;
   padding-bottom: 5px;
 }
-.btn {
-  border: 2px solid beige;
-  background-color: #8a8ab7;
-  text-transform: uppercase;
+
+.btnDiv {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
-.btn:focus {
-  border: 2px solid rgb(189, 189, 26);
-  background-color: #2626cb;
-}
-.btn:hover {
-  border: 2px solid rgb(189, 189, 26);
-  background-color: #2626cb;
-}
+
 .paragraphDiv {
   margin-right: 30px;
 }

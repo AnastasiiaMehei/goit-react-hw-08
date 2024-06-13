@@ -3,26 +3,46 @@ import css from "./SearchBox.module.css";
 import {
   changeContactsFilter,
   selectContactsFilter,
-} from "../../redux/filtersSlice";
-import { useId } from "react";
+} from "../../redux/filter/filter";
 export default function SearchBox() {
-  const id = useId();
   const dispatch = useDispatch();
   const filter = useSelector(selectContactsFilter);
 
   return (
     <div className={css.div}>
-      <label htmlFor={id}>
+      <label htmlFor="search">
         <p className={css.paragraph}>Find contacts by name</p>
       </label>
       <input
         className={css.input}
-        id={id}
+        id="search"
         onChange={(e) => dispatch(changeContactsFilter(e.target.value))}
         type="text"
         value={filter}
-        placeholder="Search ..."
+        placeholder="Search..."
       />
     </div>
   );
 }
+// import { useId } from "react";
+// export default function SearchBox() {
+//   const id = useId();
+//   const dispatch = useDispatch();
+//   const filter = useSelector(selectContactsFilter);
+
+//   return (
+//     <div className={css.div}>
+//       <label htmlFor={id}>
+//         <p className={css.paragraph}>Find contacts by name</p>
+//       </label>
+//       <input
+//         className={css.input}
+//         id={id}
+//         onChange={(e) => dispatch(changeContactsFilter(e.target.value))}
+//         type="text"
+//         value={filter}
+//         placeholder="Search ..."
+//       />
+//     </div>
+//   );
+// }
