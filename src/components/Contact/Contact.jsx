@@ -7,7 +7,7 @@ import { FaPhone } from "react-icons/fa6";
 import { FaTrashCan } from "react-icons/fa6";
 import { GrEdit } from "react-icons/gr";
 import Modal from "../Modal/Modal";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 
 export default function Contact({ id, contact }) {
   const dispatch = useDispatch();
@@ -92,23 +92,26 @@ export default function Contact({ id, contact }) {
   }
 
   return (
-    <div className={css.container}>
-      <div className={css.paragraphDiv}>
-        <p className={css.paragraph}>
-          <IoPerson className={css.icon} /> {editedContact.name}
-        </p>
-        <p className={css.paragraph}>
-          <FaPhone className={css.icon} /> {editedContact.number}
-        </p>
+    <>
+      <Toaster />
+      <div className={css.container}>
+        <div className={css.paragraphDiv}>
+          <p className={css.paragraph}>
+            <IoPerson className={css.icon} /> {editedContact.name}
+          </p>
+          <p className={css.paragraph}>
+            <FaPhone className={css.icon} /> {editedContact.number}
+          </p>
+        </div>
+        <div className={css.btnDiv}>
+          <button className={css.btn} onClick={handleDelete}>
+            <FaTrashCan />
+          </button>
+          <button className={css.btn} onClick={handleEdit}>
+            <GrEdit />
+          </button>
+        </div>
       </div>
-      <div className={css.btnDiv}>
-        <button className={css.btn} onClick={handleDelete}>
-          <FaTrashCan />
-        </button>
-        <button className={css.btn} onClick={handleEdit}>
-          <GrEdit />
-        </button>
-      </div>
-    </div>
+    </>
   );
 }

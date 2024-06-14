@@ -3,7 +3,7 @@ import * as Yup from "yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addContact } from "../../redux/contacts/operations";
 import { selectToken } from "../../redux/auth/selectors";
-import { toast } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import css from "./ContactEditor.module.css";
 
 export default function ContactEditor() {
@@ -41,29 +41,36 @@ export default function ContactEditor() {
   });
 
   return (
-    <Formik
-      initialValues={{
-        name: "",
-        phone: "",
-      }}
-      validationSchema={validationSchema}
-      onSubmit={handleSubmit}
-    >
-      {({ isSubmitting }) => (
-        <Form className={css.form}>
-          <div className={css.div}>
-            <Field className={css.field} name="name" placeholder="Name" />
-            <ErrorMessage className={css.span} name="name" component="span" />
-          </div>
-          <div className={css.div}>
-            <Field className={css.field} name="phone" placeholder="Phone" />
-            <ErrorMessage className={css.span} name="phone" component="span" />
-          </div>
-          <button type="submit" disabled={isSubmitting}>
-            Add contact
-          </button>
-        </Form>
-      )}
-    </Formik>
+    <>
+      <Toaster />
+      <Formik
+        initialValues={{
+          name: "",
+          phone: "",
+        }}
+        validationSchema={validationSchema}
+        onSubmit={handleSubmit}
+      >
+        {({ isSubmitting }) => (
+          <Form className={css.form}>
+            <div className={css.div}>
+              <Field className={css.field} name="name" placeholder="Name" />
+              <ErrorMessage className={css.span} name="name" component="span" />
+            </div>
+            <div className={css.div}>
+              <Field className={css.field} name="phone" placeholder="Phone" />
+              <ErrorMessage
+                className={css.span}
+                name="phone"
+                component="span"
+              />
+            </div>
+            <button type="submit" disabled={isSubmitting}>
+              Add contact
+            </button>
+          </Form>
+        )}
+      </Formik>
+    </>
   );
 }
