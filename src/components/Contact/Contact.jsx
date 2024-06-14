@@ -51,7 +51,7 @@ export default function Contact({ id, contact }) {
     e.preventDefault();
     dispatch(updateContact({ contactId: id, updatedData: editedContact }))
       .then(() => {
-        toast.success("Contact updated successfully!");
+        toast.success("Contact updated successfully");
         setIsEditing(false);
       })
       .catch((error) => {
