@@ -17,25 +17,15 @@ export default filtersSlice.reducer;
 
 export const selectContactsFilter = (state) => state.filters?.name ?? "";
 
-export const selectContacts = (state) => state.contacts.items;
 export const selectFilteredContacts = createSelector(
   [selectAllContacts, selectContactsFilter],
   (contacts, filter) => {
     if (!filter) return contacts;
-    return contacts.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
+    return contacts.filter(
+      (contact) =>
+        (contact.name &&
+          contact.name.toLowerCase().includes(filter.toLowerCase())) ||
+        contact.number.includes(filter)
     );
   }
 );
-// export const selectFilteredContacts = createSelector(
-//   [selectContacts, selectContactsFilter],
-//   (contacts, filter) => {
-//     filter = typeof filter === "string" ? filter : "";
-//     return contacts.filter(
-//       (contact) =>
-//         contact &&
-//         contact.name &&
-//         contact.name.toLowerCase().includes(filter.toLowerCase())
-//     );
-//   }
-// );

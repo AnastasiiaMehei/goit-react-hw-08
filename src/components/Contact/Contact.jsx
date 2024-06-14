@@ -1,18 +1,39 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { deleteContact, updateContact } from "../../redux/contacts/operations"; // Импортируйте updateContact
+import { deleteContact, updateContact } from "../../redux/contacts/operations";
 import css from "./Contact.module.css";
 import { IoPerson } from "react-icons/io5";
 import { FaPhone } from "react-icons/fa6";
 import { FaTrashCan } from "react-icons/fa6";
 import { GrEdit } from "react-icons/gr";
+import Modal from "../Modal/Modal";
+import { toast } from "react-hot-toast";
 
 export default function Contact({ id, contact }) {
   const dispatch = useDispatch();
   const [isEditing, setIsEditing] = useState(false);
   const [editedContact, setEditedContact] = useState(contact);
+  const [showModal, setShowModal] = useState(false);
 
-  const handleDelete = () => dispatch(deleteContact(id));
+  const handleDelete = () => {
+    setShowModal(true);
+  };
+
+  const confirmDelete = () => {
+    dispatch(deleteContact(id))
+      .then(() => {
+        toast.success("Contact deleted successfully!");
+        setShowModal(false);
+      })
+      .catch((error) => {
+        console.error("Failed to delete contact:", error);
+        toast.error("Failed to delete contact.");
+      });
+  };
+
+  const cancelDelete = () => {
+    setShowModal(false);
+  };
 
   const handleEdit = () => {
     setIsEditing(true);
@@ -28,9 +49,27 @@ export default function Contact({ id, contact }) {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(updateContact({ contactId: id, updatedData: editedContact }));
-    setIsEditing(false);
+    dispatch(updateContact({ contactId: id, updatedData: editedContact }))
+      .then(() => {
+        toast.success("Contact updated successfully!");
+        setIsEditing(false);
+      })
+      .catch((error) => {
+        console.error("Failed to update contact:", error);
+        toast.error("Failed to update contact.");
+      });
   };
+
+  if (showModal) {
+    return (
+      <Modal isOpen={showModal} onClose={cancelDelete}>
+        <h2>Confirm action</h2>
+        <p>Are you sure you want to delete this contact?</p>
+        <button onClick={confirmDelete}>Yes, delete</button>
+        <button onClick={cancelDelete}>Cancel</button>
+      </Modal>
+    );
+  }
 
   if (isEditing) {
     return (
