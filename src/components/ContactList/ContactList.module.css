@@ -17,3 +17,22 @@
   align-items: center;
   justify-content: center;
 }
+@media screen and (max-width: 860px) {
+  .ul {
+    display: flex;
+    flex-direction: column;
+  }
+}
+@media screen and (min-width: 860px) {
+  .ul {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1500px) {
+  .ul {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
