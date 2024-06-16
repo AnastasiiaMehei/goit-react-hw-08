@@ -9,7 +9,7 @@ export const fetchContacts = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
-      console.log("Token in fetchContacts:", token); // Логирование токена
+      console.log("Token in fetchContacts:", token);
       if (token) {
         setAuthHeader(token);
       }
@@ -24,20 +24,19 @@ export const fetchContacts = createAsyncThunk(
 export const addContact = createAsyncThunk(
   "contacts/addContact",
   async ({ name, number }, thunkAPI) => {
-    // Изменено phone на number
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
       if (token) {
         setAuthHeader(token);
       }
-      console.log("Adding contact:", { name, number }); // Логирование данных
-      const response = await axios.post("/contacts", { name, number }); // Изменено phone на number
-      console.log("Contact added:", response.data); // Логирование ответа
+      console.log("Adding contact:", { name, number });
+      const response = await axios.post("/contacts", { name, number });
+      console.log("Contact added:", response.data);
       return response.data;
     } catch (e) {
-      console.error("Error adding contact:", e.message); // Логирование ошибки
-      console.error("Error response data:", e.response.data); // Логирование данных ответа
+      console.error("Error adding contact:", e.message);
+      console.error("Error response data:", e.response.data);
       return thunkAPI.rejectWithValue(e.message);
     }
   }
