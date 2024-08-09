@@ -1,5 +1,14 @@
 .div {
   display: flex;
-  align-items: flex-start;
+
+  align-items: center;
   color: #8a8ab7;
+  flex-direction: column;
+}
+.paragraph {
+  font-size: 25px;
+  color: #010101;
+  text-align: center;
+  margin: 25px 0 10px;
+  margin-bottom: 20px;
 }

@@ -43,34 +43,57 @@ export default function ContactEditor() {
   return (
     <>
       <Toaster />
-      <Formik
-        initialValues={{
-          name: "",
-          phone: "",
-        }}
-        validationSchema={validationSchema}
-        onSubmit={handleSubmit}
-      >
-        {({ isSubmitting }) => (
-          <Form className={css.form}>
-            <div className={css.div}>
-              <Field className={css.field} name="name" placeholder="Name" />
-              <ErrorMessage className={css.span} name="name" component="span" />
-            </div>
-            <div className={css.div}>
-              <Field className={css.field} name="phone" placeholder="Phone" />
-              <ErrorMessage
-                className={css.span}
-                name="phone"
-                component="span"
-              />
-            </div>
-            <button type="submit" disabled={isSubmitting}>
-              Add contact
-            </button>
-          </Form>
-        )}
-      </Formik>
+      <section className={css.section}>
+        <div className={css.formBox}>
+          <div className={css.formValue}>
+            <Formik
+              initialValues={{
+                name: "",
+                phone: "",
+              }}
+              validationSchema={validationSchema}
+              onSubmit={handleSubmit}
+            >
+              {({ isSubmitting }) => (
+                <Form className={css.form}>
+                  <h2>Add Contact</h2>
+                  <div className={css.inputbox}>
+                    <Field
+                      className={css.field}
+                      name="name"
+                      placeholder="Name"
+                    />
+                    <ErrorMessage
+                      className={css.span}
+                      name="name"
+                      component="span"
+                    />
+                  </div>
+                  <div className={css.inputbox}>
+                    <Field
+                      className={css.field}
+                      name="phone"
+                      placeholder="Phone"
+                    />
+                    <ErrorMessage
+                      className={css.span}
+                      name="phone"
+                      component="span"
+                    />
+                  </div>
+                  <button
+                    className={css.btn}
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
+                    Add contact
+                  </button>
+                </Form>
+              )}
+            </Formik>
+          </div>
+        </div>
+      </section>
     </>
   );
 }

@@ -9,12 +9,12 @@ export default function SearchBox() {
   const filter = useSelector(selectContactsFilter);
 
   return (
-    <div className={css.div}>
+    <div className={css.inputbox}>
       <label htmlFor="search">
         <p className={css.paragraph}>Find contacts by name</p>
       </label>
       <input
-        className={css.input}
+        className={css.field}
         id="search"
         onChange={(e) => dispatch(changeContactsFilter(e.target.value))}
         type="text"
