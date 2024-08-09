@@ -1,21 +1,17 @@
-.div {
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.inputbox {
+  position: relative;
+  width: 310px;
+  border-bottom: 2px solid #fff;
+  margin: 18px auto;
 }
-.input {
-  width: 260px;
-  border: 1px solid;
-  padding: 10px;
-}
-.input:hover {
-  border: 2px solid salmon;
-}
-.input:focus {
-  border: 2px solid salmon;
-}
-.paragraph {
-  font-size: 27px;
-  color: #282828;
+
+.field {
+  width: 100%;
+  height: 50px;
+  background: transparent;
+  border: none;
+  outline: none;
+  font-size: 1em;
+  padding: 0 35px 0 5px;
+  color: #fff;
 }

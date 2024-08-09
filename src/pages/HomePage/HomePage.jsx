@@ -7,6 +7,10 @@ export default function HomePage() {
     <div className={css.div}>
       <PageTitle>Contacts Book</PageTitle>
       <GiNotebook size={55} />
+      <p className={css.paragraph}>
+        Welcome to the Contact Book! <br /> Manage your contacts easily and
+        securely.
+      </p>
     </div>
   );
 }
