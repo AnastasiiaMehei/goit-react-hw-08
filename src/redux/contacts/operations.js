@@ -9,7 +9,6 @@ export const fetchContacts = createAsyncThunk(
     try {
       const state = thunkAPI.getState();
       const token = state.auth.token;
-      console.log("Token in fetchContacts:", token);
       if (token) {
         setAuthHeader(token);
       }
