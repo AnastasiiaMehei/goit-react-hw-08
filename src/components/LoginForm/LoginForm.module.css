@@ -80,10 +80,10 @@ input:valid ~ label {
 
 .icon {
   position: absolute;
-  right: 8px;
+  right: 13px;
   color: #fff;
   font-size: 1.2em;
-  top: 20px;
+  top: 39px;
 }
 
 .forget {
