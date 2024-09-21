@@ -28,23 +28,23 @@ export default function LoginForm() {
               <h2>Login</h2>
               <div className={css.inputbox}>
                 <FaEnvelope className={css.icon} />
+                <label>Email</label>
                 <Field
                   className={css.field}
                   type="email"
                   name="email"
                   placeholder="Email"
                 />
-                <label>Email</label>
               </div>
               <div className={css.inputbox}>
                 <FaLock className={css.icon} />
+                <label>Password</label>
                 <Field
                   className={css.field}
                   type="password"
                   name="password"
                   placeholder="Password"
-                />
-                <label>Password</label>
+                  />
               </div>
 
               <button className={css.btn} type="submit">
